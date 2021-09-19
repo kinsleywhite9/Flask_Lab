@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request 
 app = Flask(__name__)
 
 @app.route("/")
@@ -9,6 +9,7 @@ if __name__ == "__main__":
 
 @app.route("/about")
 def about():
-    return render_template("about.html")
+    name = request.args.get('name') if request.args.get('name') else "Hello World!" 
+    return render_template("about.html", aboutName=name) 
 
 
